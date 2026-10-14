@@ -1,0 +1,13 @@
+[Unit]
+Description=Eco-Worthy battery CSV logger
+After=bluetooth.target
+Wants=bluetooth.target
+
+[Service]
+User=pi
+ExecStart=/home/pi/ecoenv/bin/python -u /home/pi/ecoworthy_logger.py --battery house1=A5:C2:37:69:78:6D --battery house2=A5:C2:37:69:8F:74 --interval 30 --csv /home/pi/battery_log.csv --signalk-host 127.0.0.1
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
