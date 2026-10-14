@@ -17,7 +17,8 @@ Save these addresses as you will need to add them to the command line to run the
 ```
 
 ## Execution:
-Use the following command to launch the logger script to monitor the batteries listed in the command line as house1=aa:bb:cc:dd:ee:ff  house2=aa:bb:cc:dd:ee:ff  etc as needed for your battery system.
+Modify the following command use the mac addresses for your batteries (add additional batteries as needed using --battery) then run the command tp launch the logger script.
+The logger script will create a csv file in ~/battery_log.csv to contain the date from each battery.
 ```
 ~/ecoenv/bin/python ecoworthy_logger.py \
   --battery house1=aa:bb:cc:dd:ee:ff \
@@ -27,8 +28,8 @@ Use the following command to launch the logger script to monitor the batteries l
 ```
 
 
-## Enabling as a Service:
-Getting the data into ~/BoatPi for remote access
+## Copying the file to a shared drive (eg. rclone etc):
+Getting the data into a FUSE mounted drive for remote access
 
 Copying the whole file works fine on FUSE mounts, because it's a plain create/overwrite rather than an append. Add a cron job (crontab -e):
 
@@ -38,9 +39,10 @@ Copying the whole file works fine on FUSE mounts, because it's a plain create/ov
 
 If the network drive is offline, the copy just fails and tries again 5 minutes later, with no effect on logging. The file will grow by roughly 0.7 MB per day with two batteries at 30-second intervals, which is no concern for an SD card.
 
+## Enabling as a Service:
 ## Starting at boot and recovering automatically
 
-Save this as /etc/systemd/system/battery-logger.service, adjusting the script path if you keep it somewhere other than your home folder:
+Save the info below in a file as /etc/systemd/system/battery-logger.service, adjusting the script path if you keep it somewhere other than your home folder:
 
 ```
 [Unit]
