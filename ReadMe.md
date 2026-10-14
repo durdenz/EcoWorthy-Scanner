@@ -40,7 +40,7 @@ Copying the whole file works fine on FUSE mounts, because it's a plain create/ov
 If the network drive is offline, the copy just fails and tries again 5 minutes later, with no effect on logging. The file will grow by roughly 0.7 MB per day with two batteries at 30-second intervals, which is no concern for an SD card.
 
 ## Enabling as a Service:
-## Starting at boot and recovering automatically
+### Starting at boot and recovering automatically
 
 Save the info below in a file as /etc/systemd/system/battery-logger.service, adjusting the script path if you keep it somewhere other than your home folder:
 
