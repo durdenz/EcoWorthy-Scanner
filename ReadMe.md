@@ -15,7 +15,7 @@ python3 -m venv ~/ecoenv && ~/ecoenv/bin/pip install bleak
 ```
 
 
-##Enabling as a Service:
+## Enabling as a Service:
 Getting the data into ~/BoatPi for remote access
 
 Copying the whole file works fine on FUSE mounts, because it's a plain create/overwrite rather than an append. Add a cron job (crontab -e):
