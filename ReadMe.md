@@ -1,15 +1,27 @@
 ## Setup:
+Run this setup command to load the dependencies for the project:
 ```
 sudo apt install python3-venv bluez
+```
+
+Run the command below to create the python env for the project.
+```
 python3 -m venv ~/ecoenv && ~/ecoenv/bin/pip install bleak
+```
+
+Run the scan below to find the mac addresses of your batteries.
+The addresses will be in the format aa:bb:cc:dd:ee:ff 
+Save these addresses as you will need to add them to the command line to run the logger.
+```
 ~/ecoenv/bin/python ecoworthy_logger.py --scan
 ```
 
 ## Execution:
+Use the following command to launch the logger script to monitor the batteries listed in the command line as house1=aa:bb:cc:dd:ee:ff  house2=aa:bb:cc:dd:ee:ff  etc as needed for your battery system.
 ```
 ~/ecoenv/bin/python ecoworthy_logger.py \
-  --battery house1=A5:C2:37:69:78:6D \
-  --battery house2=A5:C2:37:69:8F:74 \
+  --battery house1=aa:bb:cc:dd:ee:ff \
+  --battery house2=aa:bb:cc:dd:ee:ff \
   --interval 30 --csv ~/battery_log.csv \
   --signalk-host 127.0.0.1
 ```
